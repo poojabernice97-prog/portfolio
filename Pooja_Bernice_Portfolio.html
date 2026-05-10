@@ -1,0 +1,2355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pooja Bernice Janarathinam | Project Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #ffffff;
+      --bg2:      #f0f4ff;
+      --surface:  #e8eeff;
+      --border:   rgba(30,80,200,0.15);
+      --p1:       #1e50c8;
+      --p2:       #1a3fa0;
+      --c1:       #2563eb;
+      --c2:       #3b82f6;
+      --pk:       #0ea5e9;
+      --gold:     #f59e0b;
+      --white:    #0f172a;
+      --muted:    #475569;
+      --font:     'Aptos', 'DM Sans', 'Nunito Sans', sans-serif;
+      --display:  'Aptos', 'DM Sans', 'Nunito Sans', sans-serif; 
+      --serif:    'DM Serif Display', serif;
+      --rad:      38px;
+      --rad-lg:   48px;
+      --glow-p:   0 0 50px rgba(30,80,200,0.3);
+      --glow-c:   0 0 50px rgba(37,99,235,0.3);
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    #cursor {
+      position: fixed;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--c1);
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: width .2s, height .2s, background .2s;
+      mix-blend-mode: multiply;
+    }
+    #cursor-ring {
+      position: fixed;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(30,80,200,0.6);
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      transition: all .12s ease;
+    }
+    body:has(a:hover) #cursor,
+    body:has(button:hover) #cursor { width: 20px; height: 20px; background: var(--pk); }
+    body:has(a:hover) #cursor-ring,
+    body:has(button:hover) #cursor-ring { width: 60px; height: 60px; border-color: var(--pk); }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg2); }
+    ::-webkit-scrollbar-thumb { background: var(--c1); border-radius: 4px; }
+
+    #noise {
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.04;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      padding: 0 5%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .4s, backdrop-filter .4s, border-bottom .4s;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 20px rgba(30,80,200,0.08);
+    }
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--c1), var(--p1));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: color .25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--c1);
+      transition: width .3s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      padding: .5rem 1.4rem;
+      border: 1px solid var(--p1);
+      border-radius: 100px;
+      color: var(--p1) !important;
+      font-size: .8rem !important;
+      transition: background .3s, box-shadow .3s, color .3s !important;
+    }
+    .nav-cta:hover { background: var(--p1); color: #fff !important; box-shadow: var(--glow-p); }
+    .nav-cta::after { display: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; }
+    .hamburger span { width: 28px; height: 2px; background: var(--white); transition: .3s; }
+
+    section { position: relative; padding: 120px 8% 100px; overflow: hidden; }
+    .section-label {
+      font-size: .7rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--c1);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 32px; height: 1px;
+      background: var(--c1);
+      display: inline-block;
+    }
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .section-title span {
+      background: linear-gradient(135deg, var(--c1), var(--p1), var(--pk));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+    .reveal-delay-5 { transition-delay: .5s; }
+
+    #home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 0;
+      padding-bottom: 0;
+      background: linear-gradient(160deg, #f0f6ff 0%, #ffffff 50%, #e8f0ff 100%);
+    }
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .4rem 1rem;
+      border-radius: 100px;
+      border: 1px solid rgba(37,99,235,0.3);
+      background: rgba(37,99,235,0.07);
+      color: var(--c1);
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      animation: fadeDown .8s ease both;
+    }
+    .hero-badge span.dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--c1);
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(1.4); }
+    }
+    .hero-title {
+      font-family: var(--display);
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      animation: fadeUp .9s ease .2s both;
+    }
+    .hero-title .line2 {
+      display: block;
+      background: linear-gradient(90deg, var(--c1) 0%, var(--p1) 50%, var(--pk) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeUp .9s ease .3s both, gradient-shift 4s linear infinite;
+    }
+    @keyframes gradient-shift {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    .hero-sub {
+      margin-top: 1.5rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 520px;
+      animation: fadeUp .9s ease .45s both;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      animation: fadeUp .9s ease .6s both;
+    }
+    .btn-primary {
+      padding: .85rem 2.2rem;
+      border-radius: 100px;
+      background: linear-gradient(135deg, var(--p1), var(--c1));
+      color: #fff;
+      font-weight: 600;
+      font-size: .95rem;
+      text-decoration: none;
+      border: none;
+      cursor: none;
+      transition: transform .2s, box-shadow .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.15);
+      transform: translateX(-100%);
+      transition: transform .3s;
+    }
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(30,80,200,0.4); }
+    .btn-secondary {
+      padding: .85rem 2.2rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: rgba(30,80,200,0.04);
+      color: var(--white);
+      font-weight: 500;
+      font-size: .95rem;
+      text-decoration: none;
+      cursor: none;
+      transition: border-color .3s, background .3s, transform .2s;
+      backdrop-filter: blur(8px);
+    }
+    .btn-secondary:hover {
+      border-color: var(--c1);
+      background: rgba(37,99,235,0.08);
+      transform: translateY(-2px);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 3rem;
+      left: 8%;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      color: var(--muted);
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      animation: fadeUp .9s ease .9s both;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--muted));
+      animation: grow-line 1.5s ease 1s both;
+    }
+    @keyframes grow-line { from { height: 0; } to { height: 60px; } }
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      animation: fadeUp .9s ease .75s both;
+    }
+    .hero-stat-num {
+      font-family: var(--display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--p1), var(--c1));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: .75rem;
+      color: var(--muted);
+      letter-spacing: .05em;
+      margin-top: .25rem;
+    }
+    .hero-stat { position: relative; }
+    .hero-stat::after {
+      content: '';
+      position: absolute;
+      right: -1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 36px;
+      background: var(--border);
+    }
+    .hero-stat:last-child::after { display: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+    .orb-1 { width: 700px; height: 700px; background: rgba(30,80,200,0.10); top: -200px; right: -100px; }
+    .orb-2 { width: 450px; height: 450px; background: rgba(37,99,235,0.08); bottom: 100px; right: 20%; }
+    .orb-3 { width: 350px; height: 350px; background: rgba(14,165,233,0.08); top: 30%; right: 10%; }
+
+    #about { background: var(--bg2); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: var(--rad-lg);
+      background: linear-gradient(135deg, var(--surface), var(--bg));
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(30,80,200,0.12);
+    }
+    .about-photo-inner {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(30,80,200,0.06) 0%, rgba(37,99,235,0.04) 50%, rgba(14,165,233,0.03) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7rem;
+    }
+    .about-corner-badge {
+      position: absolute;
+      top: 1.5rem;
+      left: -1.5rem;
+      padding: .75rem 1.2rem;
+      background: linear-gradient(135deg, var(--p1), var(--p2));
+      border-radius: var(--rad);
+      font-size: .78rem;
+      font-weight: 600;
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(30,80,200,0.35);
+    }
+    .about-content p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .about-content p strong { color: var(--white); }
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 2rem;
+    }
+    .skill-chip {
+      padding: .35rem 1rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: .78rem;
+      color: var(--muted);
+      transition: border-color .3s, color .3s, background .3s;
+    }
+    .skill-chip:hover {
+      border-color: var(--c1);
+      color: var(--c1);
+      background: rgba(37,99,235,0.06);
+    }
+    .about-bars { margin-top: 2.5rem; }
+    .bar-item { margin-bottom: 1.2rem; }
+    .bar-header { display: flex; justify-content: space-between; margin-bottom: .4rem; font-size: .82rem; }
+    .bar-header span:last-child { color: var(--muted); }
+    .bar-track {
+      height: 4px;
+      background: rgba(30,80,200,0.12);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--p1), var(--c1));
+  width: 0%;
+  transition: width 1.2s cubic-bezier(.23,1,.32,1);
+}
+.bar-fill.animated {
+  width: inherit;
+}
+    .bar-fill.animated { transform: scaleX(1); }
+
+    #portfolio { background: var(--bg); }
+    .portfolio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .filter-tabs {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: .45rem 1.1rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-size: .78rem;
+      font-family: var(--font);
+      cursor: none;
+      transition: .3s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--p1);
+      border-color: var(--p1);
+      color: #fff;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .port-card {
+      position: relative;
+      border-radius: var(--rad);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(30,80,200,0.06);
+      transition: transform .3s, box-shadow .3s, opacity .4s;
+      cursor: none;
+      transform-style: preserve-3d;
+    }
+    .port-card.hidden { opacity: 0; pointer-events: none; transform: scale(0.9); }
+    .port-card:hover { transform: translateY(-6px) rotateX(2deg) rotateY(-1deg); box-shadow: 0 24px 60px rgba(30,80,200,0.15), var(--glow-p); }
+    .port-card-img {
+      aspect-ratio: 16/10;
+      position: relative;
+      overflow: hidden;
+    }
+    .port-card-img-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      transition: transform .4s;
+    }
+    .port-card:hover .port-card-img-inner { transform: scale(1.08); }
+    .port-card-body { padding: 1.4rem; }
+    .port-card-tag {
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--c1);
+      margin-bottom: .5rem;
+    }
+    .port-card-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: .4rem;
+      line-height: 1.3;
+      color: var(--white);
+    }
+    .port-card-desc { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+    .port-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .8rem 1.4rem;
+      border-top: 1px solid var(--border);
+    }
+    .port-card-footer .tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+    .port-tag {
+      font-size: .65rem;
+      padding: .2rem .6rem;
+      border-radius: 100px;
+      background: rgba(37,99,235,0.08);
+      color: var(--p1);
+      border: 1px solid rgba(37,99,235,0.15);
+    }
+    .port-arrow {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      font-size: 1rem;
+      transition: .3s;
+      flex-shrink: 0;
+    }
+    .port-card:hover .port-arrow {
+      background: var(--p1);
+      border-color: var(--p1);
+      color: #fff;
+    }
+
+    .bg-grad-1 { background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%); }
+    .bg-grad-2 { background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%); }
+    .bg-grad-3 { background: linear-gradient(135deg, #ede9fe 0%, #f5f3ff 100%); }
+    .bg-grad-4 { background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%); }
+    .bg-grad-5 { background: linear-gradient(135deg, #fef9c3 0%, #fffbeb 100%); }
+    .bg-grad-6 { background: linear-gradient(135deg, #cffafe 0%, #ecfeff 100%); }
+
+    #projects { background: var(--bg2); }
+    .projects-featured {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    .proj-card-big {
+      border-radius: var(--rad-lg);
+      background: #fff;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: .35s;
+      cursor: none;
+      box-shadow: 0 4px 20px rgba(30,80,200,0.06);
+    }
+    .proj-card-big:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(30,80,200,0.15); }
+    .proj-big-banner {
+      aspect-ratio: 16/8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .proj-big-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, #fff 0%, transparent 60%);
+    }
+    .proj-big-body { padding: 2rem; }
+    .proj-big-meta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .proj-status {
+      padding: .3rem .8rem;
+      border-radius: 100px;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+    }
+    .status-complete { background: rgba(16,185,129,0.12); color: #059669; border: 1px solid rgba(16,185,129,0.2); }
+    .status-active   { background: rgba(245,158,11,0.12); color: #d97706; border: 1px solid rgba(245,158,11,0.2); }
+    .status-planning { background: rgba(37,99,235,0.10); color: var(--p1); border: 1px solid rgba(37,99,235,0.2); }
+    .proj-date { font-size: .75rem; color: var(--muted); }
+    .proj-big-title {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: .75rem;
+      line-height: 1.2;
+      color: var(--white);
+    }
+    .proj-big-desc { color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; font-size: .9rem; }
+    .proj-progress-wrap { margin-top: 1rem; }
+    .proj-progress-label { display: flex; justify-content: space-between; font-size: .78rem; margin-bottom: .4rem; color: var(--white); }
+    .proj-progress-label span:last-child { color: var(--c1); font-weight: 600; }
+    .proj-progress-track { height: 6px; background: rgba(30,80,200,0.12); border-radius: 6px; overflow: hidden; }
+    .proj-progress-fill {
+      height: 100%;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--p1), var(--c1));
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1.4s cubic-bezier(.23,1,.32,1);
+    }
+    .proj-progress-fill.animated { transform: scaleX(1); }
+    .projects-side { display: flex; flex-direction: column; gap: 1.5rem; }
+    .proj-card-sm {
+      border-radius: var(--rad);
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      transition: .3s;
+      cursor: none;
+      box-shadow: 0 2px 12px rgba(30,80,200,0.05);
+    }
+    .proj-card-sm:hover { transform: translateX(4px); border-color: rgba(37,99,235,0.35); box-shadow: -4px 0 30px rgba(37,99,235,0.1); }
+    .proj-sm-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .75rem; }
+    .proj-icon { font-size: 2rem; }
+    .proj-sm-title { font-weight: 700; font-size: 1.02rem; margin-bottom: .4rem; color: var(--white); }
+    .proj-sm-desc { font-size: .8rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+    .proj-sm-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+    .proj-sm-tag {
+      font-size: .65rem;
+      padding: .2rem .7rem;
+      border-radius: 100px;
+      background: var(--bg2);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    #leadership { background: var(--bg); }
+    .timeline {
+      position: relative;
+      margin-top: 5rem;
+      padding-left: 3rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--p1), var(--c1), transparent);
+    }
+    .tl-item {
+      position: relative;
+      padding-bottom: 4rem;
+      padding-left: 3rem;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--c1);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 20px var(--c1);
+    }
+    .tl-dot-big {
+      position: absolute;
+      left: -20px;
+      top: 0;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 16px rgba(30,80,200,0.1);
+    }
+    .tl-period {
+      font-size: .75rem;
+      color: var(--c1);
+      letter-spacing: .08em;
+      margin-bottom: .5rem;
+      font-weight: 500;
+    }
+    .tl-role {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: .25rem;
+      line-height: 1.2;
+      color: var(--white);
+    }
+    .tl-company {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 1rem;
+    }
+    .tl-company strong { color: var(--white); font-weight: 500; }
+    .tl-desc { color: var(--muted); line-height: 1.75; margin-bottom: 1.25rem; font-size: .9rem; }
+    .tl-achievements { list-style: none; }
+    .tl-achievements li {
+      font-size: .85rem;
+      color: var(--muted);
+      padding: .35rem 0;
+      display: flex;
+      gap: .6rem;
+      align-items: flex-start;
+    }
+    .tl-achievements li::before {
+      content: '▹';
+      color: var(--c1);
+      flex-shrink: 0;
+      margin-top: .05rem;
+    }
+    .tl-achievements li strong { color: var(--white); }
+    .tl-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: 1rem; }
+    .tl-tag {
+      padding: .25rem .8rem;
+      font-size: .7rem;
+      border-radius: 100px;
+      background: rgba(37,99,235,0.08);
+      border: 1px solid rgba(37,99,235,0.15);
+      color: var(--p1);
+    }
+
+    #events { background: var(--bg2); }
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    .event-card {
+      border-radius: var(--rad);
+      background: #fff;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: .3s;
+      cursor: none;
+      box-shadow: 0 2px 12px rgba(30,80,200,0.05);
+    }
+    .event-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(30,80,200,0.12); border-color: rgba(37,99,235,0.3); }
+    .event-banner {
+      padding: 1.8rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      position: relative;
+      min-height: 120px;
+    }
+    .event-year {
+      font-family: var(--display);
+      font-size: 4rem;
+      font-weight: 800;
+      opacity: 0.15;
+      position: absolute;
+      right: 1rem;
+      bottom: -0.5rem;
+      line-height: 1;
+      color: var(--p1);
+    }
+    .event-date-chip {
+      padding: .4rem .9rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: .04em;
+      border: 1px solid rgba(30,80,200,0.15);
+    }
+    .event-role-chip {
+      padding: .4rem .9rem;
+      border-radius: 8px;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .role-speaker  { background: rgba(37,99,235,0.12); color: var(--p1); border: 1px solid rgba(37,99,235,0.2); }
+    .role-panelist { background: rgba(14,165,233,0.12); color: #0284c7; border: 1px solid rgba(14,165,233,0.2); }
+    .role-attendee { background: rgba(245,158,11,0.12); color: #d97706; border: 1px solid rgba(245,158,11,0.2); }
+    .role-organizer{ background: rgba(30,80,200,0.12); color: var(--p2); border: 1px solid rgba(30,80,200,0.2); }
+    .event-body { padding: 1.4rem; }
+    .event-title { font-weight: 700; font-size: 1.02rem; margin-bottom: .4rem; line-height: 1.3; color: var(--white); }
+    .event-org { font-size: .78rem; color: var(--muted); margin-bottom: .6rem; }
+    .event-location {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .75rem;
+      color: var(--muted);
+    }
+    .event-location svg { flex-shrink: 0; }
+    .event-highlight { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .event-highlight p { font-size: .78rem; color: var(--muted); line-height: 1.6; font-style: italic; }
+
+    #blog { background: var(--bg); }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    .blog-featured {
+      grid-row: span 2;
+      border-radius: var(--rad-lg);
+      background: #fff;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: none;
+      transition: .3s;
+      box-shadow: 0 4px 20px rgba(30,80,200,0.06);
+    }
+    .blog-featured:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(30,80,200,0.12); }
+    .blog-featured-img {
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+    }
+    .blog-featured-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, #fff 0%, transparent 50%);
+    }
+    .blog-featured-body { padding: 2rem; }
+    .blog-cat {
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--c1);
+      margin-bottom: .6rem;
+    }
+    .blog-featured-title {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: .75rem;
+      color: var(--white);
+    }
+    .blog-featured-desc { color: var(--muted); line-height: 1.7; font-size: .9rem; margin-bottom: 1.5rem; }
+    .blog-meta { display: flex; gap: 1.2rem; align-items: center; }
+    .blog-meta-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--p1), var(--c1));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: .8rem;
+      color: #fff;
+    }
+    .blog-meta-info { flex: 1; }
+    .blog-meta-name { font-size: .82rem; font-weight: 600; color: var(--white); }
+    .blog-meta-date { font-size: .74rem; color: var(--muted); }
+    .blog-meta-read { font-size: .74rem; color: var(--muted); margin-left: auto; }
+    .blog-card {
+      border-radius: var(--rad);
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      cursor: none;
+      transition: .3s;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      box-shadow: 0 2px 12px rgba(30,80,200,0.04);
+    }
+    .blog-card:hover { transform: translateX(4px); border-color: rgba(37,99,235,0.3); }
+    .blog-card-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .blog-card-content { flex: 1; }
+    .blog-card-title { font-weight: 700; font-size: .95rem; margin-bottom: .4rem; line-height: 1.3; color: var(--white); }
+    .blog-card-desc { font-size: .78rem; color: var(--muted); line-height: 1.6; margin-bottom: .6rem; }
+    .blog-card-date { font-size: .7rem; color: var(--muted); }
+
+    #testimonials { background: var(--bg2); }
+    .testimonials-inner { margin-top: 4rem; position: relative; overflow: hidden; }
+    .testi-track {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .testi-card {
+      flex: 0 0 calc(33.333% - 1rem);
+      border-radius: var(--rad-lg);
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: .35s;
+      cursor: none;
+      box-shadow: 0 4px 20px rgba(30,80,200,0.06);
+    }
+    .testi-card:hover {
+      border-color: rgba(37,99,235,0.3);
+      box-shadow: 0 20px 50px rgba(30,80,200,0.12);
+      transform: translateY(-4px);
+    }
+    .testi-card::before {
+      content: '"';
+      position: absolute;
+      top: -0.5rem;
+      right: 1.5rem;
+      font-size: 8rem;
+      font-family: var(--serif);
+      color: rgba(37,99,235,0.06);
+      line-height: 1;
+    }
+    .testi-stars { display: flex; gap: .2rem; margin-bottom: 1.2rem; }
+    .testi-stars span { color: var(--gold); font-size: 1rem; }
+    .testi-quote {
+      font-size: .95rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+    .testi-author { display: flex; align-items: center; gap: .9rem; }
+    .testi-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: .9rem;
+      flex-shrink: 0;
+      color: #fff;
+    }
+    .testi-name { font-weight: 700; font-size: .9rem; color: var(--white); }
+    .testi-role { font-size: .75rem; color: var(--muted); }
+    .testi-company {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      font-size: .68rem;
+      color: rgba(30,80,200,0.25);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .testi-nav {
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+      margin-top: 2.5rem;
+    }
+    .testi-dot {
+      width: 8px; height: 8px;
+      border-radius: 100px;
+      background: rgba(30,80,200,0.15);
+      cursor: none;
+      transition: .3s;
+    }
+    .testi-dot.active { background: var(--p1); width: 28px; }
+    .testi-arrows {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .testi-arrow {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      cursor: none;
+      transition: .3s;
+      font-size: 1.1rem;
+      color: var(--p1);
+      box-shadow: 0 2px 12px rgba(30,80,200,0.08);
+    }
+    .testi-arrow:hover {
+      background: var(--p1);
+      color: #fff;
+      border-color: var(--p1);
+      box-shadow: 0 8px 24px rgba(30,80,200,0.2);
+    }
+
+    #contact {
+      padding: 80px 8%;
+      background: linear-gradient(160deg, #e8f0ff 0%, #f0f6ff 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-glow {
+      position: absolute;
+      width: 800px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(37,99,235,0.1) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .contact-inner { position: relative; z-index: 1; }
+    .contact-title {
+      font-family: var(--display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+    .contact-sub { color: var(--muted); font-size: 1.05rem; margin-bottom: 2.5rem; }
+    .contact-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    footer {
+      background: #e8eeff;
+      padding: 3rem 8%;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-logo {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--c1), var(--p1));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: .82rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-socials { display: flex; gap: .75rem; }
+    .social-btn {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: .3s;
+    }
+    .social-btn:hover { border-color: var(--p1); color: var(--p1); background: rgba(37,99,235,0.08); }
+    .footer-copy { color: var(--muted); font-size: .78rem; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: fixed; inset: 72px 0 0; background: rgba(240,244,255,0.97); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 9999; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .about-grid, .projects-featured { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .events-grid { grid-template-columns: 1fr 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .testi-card { flex: 0 0 calc(100% - 3rem); }
+      .hero-stats { gap: 2rem; }
+      .tl-item { padding-left: 1.5rem; }
+      .about-corner-badge { left: 0; }
+    }
+    @media (max-width: 520px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .events-grid { grid-template-columns: 1fr; }
+      section { padding: 80px 5% 70px; }
+      .hero-stats { flex-wrap: wrap; }
+      .hero-stat::after { display: none; }
+      .projects-side { gap: 1rem; }
+    }
+
+    /* ============================================================
+       CARD MODAL
+    ============================================================ */
+    #card-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(4, 8, 24, 0.82);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+      padding: 1.5rem;
+    }
+    #card-modal-backdrop.open { opacity: 1; pointer-events: all; }
+    #card-modal {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--rad-lg);
+      max-width: 540px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6), var(--glow-p);
+      transform: translateY(24px) scale(0.97);
+      transition: transform .35s cubic-bezier(.23,1,.32,1);
+    }
+    #card-modal-backdrop.open #card-modal { transform: translateY(0) scale(1); }
+    #card-modal-banner {
+      aspect-ratio: 16/7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #card-modal-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    #card-modal-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--surface) 0%, transparent 55%);
+    }
+    #card-modal-body { padding: 2rem; }
+    #card-modal-tag { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--c1); margin-bottom: .5rem; }
+    #card-modal-title { font-family: var(--display); font-size: 1.5rem; font-weight: 800; line-height: 1.2; margin-bottom: .75rem; }
+    #card-modal-desc { color: var(--muted); font-size: .9rem; line-height: 1.75; margin-bottom: 1.4rem; }
+    #card-modal-tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    #card-modal-tags span { font-size: .68rem; padding: .25rem .75rem; border-radius: 100px; background: rgba(168,85,247,0.12); color: var(--p1); border: 1px solid rgba(168,85,247,0.22); }
+    #card-modal-actions { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+    #card-modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.8rem;
+      border-radius: 100px;
+      background: linear-gradient(135deg, var(--p1), var(--c1));
+      color: #fff;
+      font-weight: 600;
+      font-size: .9rem;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .3s;
+    }
+    #card-modal-link:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(168,85,247,0.45); }
+    #card-modal-close {
+      padding: .75rem 1.4rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-size: .85rem;
+      font-family: var(--font);
+      cursor: none;
+      transition: .25s;
+    }
+    #card-modal-close:hover { border-color: rgba(255,255,255,0.25); color: var(--white); }
+  </style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="noise"></div>
+
+<nav id="navbar">
+  <a href="#home" class="nav-logo">PBJ.</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <!-- <li><a href="#events">Events</a></li> -->
+    <!-- <li><a href="#blog">Blog</a></li> -->
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<section id="home">
+  <canvas id="hero-canvas"></canvas>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- Two-column wrapper -->
+  <div style="display:grid; grid-template-columns:1fr 380px; align-items:center; gap:3rem; width:100%; position:relative; z-index:2;">
+
+    <!-- LEFT: existing hero content -->
+    <div class="hero-inner" style="position:relative; z-index:2;">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Available for new opportunities
+      </div>
+      <h1 class="hero-title">
+        Pooja Bernice
+        <span class="line2" id="hero-line2">Janarathinam</span>
+      </h1>
+      <p class="hero-sub" style="max-width:680px">
+        <strong style="color:#0f172a">Project Manager</strong> &nbsp;·&nbsp; Certified Scrum Master trained to enable highly effective teams to deliver impactful projects across diverse industries.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num counter" data-target="56">0</div>
+          <div class="hero-stat-label">Projects Delivered</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num counter" data-target="5">0</div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num counter" data-target="98">0</div>
+          <div class="hero-stat-label">Client Satisfaction %</div>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: three images -->
+    <div style="display:flex; flex-direction:column; gap:12px; padding:2rem 0;">
+      <img src="https://i.imgur.com/A6fqV0r.jpeg" alt="Photo 1"
+           style="width:100%; height:180px; object-fit:cover; border-radius:18px; box-shadow:0 4px 20px rgba(30,80,200,0.1);" />
+      <img src="https://i.imgur.com/5X6jrnS.jpeg" alt="Photo 2"
+     style="width:100%; height:180px; object-fit:cover; border-radius:18px; box-shadow:0 4px 20px rgba(30,80,200,0.1);" />
+      <img src="https://i.imgur.com/r3uDjXx.jpeg" alt="Photo 3"
+           style="width:100%; height:180px; object-fit:cover; border-radius:18px; box-shadow:0 4px 20px rgba(30,80,200,0.1);" />
+    </div>
+
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<section id="about" style="padding-top:30px; padding-bottom:30px; padding-left:4%; padding-right:4%;">
+  <div class="section-label reveal">About Me</div>
+
+  <div class="about-grid" style="display:grid; grid-template-columns:320px 1fr; gap:3rem; align-items:start; margin-top:2rem;">
+
+    <!-- LEFT: images -->
+    <div class="about-image-wrap reveal">
+      <div style="margin-bottom:12px;">
+        <img src="https://i.imgur.com/WYKvlsL.jpeg" alt="Pooja Bernice Janarathinam"
+             style="width:100%;height:320px;object-fit:cover;object-position:center top;border-radius:16px;" />
+      </div>
+    </div>
+
+    <!-- RIGHT: who I am content -->
+    <div class="about-content reveal reveal-delay-2">
+      <div class="section-label">Who I Am</div>
+      <h2 class="section-title">Driving projects <span> their way to success</span></h2>
+      <p>I'm a <strong>Senior Project Manager</strong> with over half a decade of experience leading complex, multi-million dollar initiatives across Finance, Technology, and Digital transformation sectors.</p>
+      <p>My approach blends <strong>data-driven decision-making</strong> with human-centered leadership. I believe the best project outcomes are made possible by highly empowered teams and clear communication, with immense focus on value delivery.</p>
+      <p>When I'm not coordinating sprint reviews or stakeholder briefings, you'll find me mentoring emerging PMs, attending industry conferences, or writing about the future of the PM industry.</p>
+
+      <div class="skills-grid">
+        <span class="skill-chip">AI Project Management</span>
+        <span class="skill-chip">LLM Proficiency</span>
+        <span class="skill-chip">Prompt Engineering</span>
+        <span class="skill-chip">Agile / Scrum</span>
+        <span class="skill-chip">Scheduling and Cost Analysis</span>
+        <span class="skill-chip">Data-driven decision making</span>
+        <span class="skill-chip">Risk Management</span>
+        <span class="skill-chip">Stakeholder Mgmt</span>
+        <span class="skill-chip">Change Management</span>
+        <span class="skill-chip">Budget Oversight</span>
+        <span class="skill-chip">CapEx/OpEx Analysis</span>
+        <span class="skill-chip">OKR/KPI Frameworks</span>
+        <span class="skill-chip">Cross-functional Collaboration</span>
+        <span class="skill-chip">Product Roadmaps</span>
+      </div>
+
+<div class="about-bars">
+  <div class="bar-item">
+    <div class="bar-header"><span>Strategic Planning</span><span>95%</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:95%;"></div></div>
+  </div>
+  <div class="bar-item">
+    <div class="bar-header"><span>Team Leadership</span><span>92%</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:92%;"></div></div>
+  </div>
+  <div class="bar-item">
+    <div class="bar-header"><span>Agile / Scrum</span><span>90%</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:90%;"></div></div>
+  </div>
+  <div class="bar-item">
+    <div class="bar-header"><span>Risk & Budget Management</span><span>90%</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:90%;"></div></div>
+  </div>
+</div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <div class="section-label reveal">My Work</div>
+      <h2 class="section-title reveal reveal-delay-1"> Portfolio  <span> Highlights </span></h2>
+    </div>
+    <div class="filter-tabs reveal reveal-delay-2">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="digital">Project Management</button>
+      <button class="filter-btn" data-filter="strategy">Interactive Dashboards</button>
+      <button class="filter-btn" data-filter="strategy">Data Analysis</button>
+      <button class="filter-btn" data-filter="infrastructure">Stakeholder Management</button>
+      <button class="filter-btn" data-filter="infrastructure">Procurement Guide</button>
+      <button class="filter-btn" data-filter="product">Risk Management</button>
+      <button class="filter-btn" data-filter="product">Communication Plan</button>
+    </div>
+  </div>
+
+  <div class="portfolio-grid">
+    <div class="port-card reveal" data-cat="digital" data-link="https://drive.google.com/drive/u/0/folders/1n9kwV280kmYmESJ1ozkgNCNLB3tTMgiN">
+<div class="port-card-img bg-grad-1">
+  <div class="port-card-img-inner">
+    <img src="https://i.imgur.com/cnnvSZS.png" alt="Project Image"
+         style="width:100%; height:100%; object-fit:cover;" />
+  </div>
+      </div>
+      <div class="port-card-body">
+        <div class="port-card-tag">MS Project</div>
+        <div class="port-card-title">Project Management</div>
+        <div class="port-card-desc">Developed Project schedules, Resource allocation strategies and Earned Value analysis for complex projects on MS Project.</div>
+      </div>
+      <div class="port-card-footer">
+        <div class="tags">
+          <span class="port-tag">MS Project</span>
+          <span class="port-tag">$194k - $1M</span>
+          <span class="port-tag">10-24 months</span>
+        </div>
+        <div class="port-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="port-card reveal reveal-delay-1" data-cat="product" data-link="https://drive.google.com/drive/folders/1gt-ASSRcsGgnCKPE_nwaL9V7-afW_RHz?usp=sharing">
+      <div class="port-card-img bg-grad-2">
+        <div class="port-card-img-inner">
+        <img src="https://i.imgur.com/YuA7uyR.png" alt="Project Image"
+         style="width:100%; height:100%; object-fit:cover;" />
+      </div>
+      </div>
+      <div class="port-card-body">
+        <div class="port-card-tag">Excel and Smartsheet</div>
+        <div class="port-card-title">Interactive Dashboards</div>
+        <div class="port-card-desc">Developed at a glance dashboards highlighting key KPIs and metrics on Excel and Smartsheet.</div>
+      </div>
+      <div class="port-card-footer">
+        <div class="tags">
+          <span class="port-tag">IT Portfolio Dashboards</span>
+          <span class="port-tag">Key KPIs and metrics</span>
+          <span class="port-tag">Reporting layers</span>
+        </div>
+        <div class="port-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="port-card reveal reveal-delay-2" data-cat="infrastructure" data-link="https://drive.google.com/file/d/1VESFDdg69dAT_ekdhim73fvv_r3Rg4hH/view?usp=drive_link">
+      <div class="port-card-img bg-grad-3">
+        <div class="port-card-img-inner">
+          <img src="https://i.imgur.com/CuOc4ea.png" alt="Project Image"
+         style="width:100%; height:100%; object-fit:cover;" />
+        </div>
+      </div>
+      <div class="port-card-body">
+        <div class="port-card-tag">Rstudio</div>
+        <div class="port-card-title">Data Analysis</div>
+        <div class="port-card-desc">Analyzed the UAE autosales data and delivered insights for strategic decision-making vehicle sales in the offering valuable insights into automotive market trendsand consumer preferences.</div>
+      </div>
+      <div class="port-card-footer">
+        <div class="tags">
+          <span class="port-tag">Rstudio</span>
+          <span class="port-tag">Data Visualization</span>
+          <span class="port-tag">R Language</span>
+        </div>
+        <div class="port-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="port-card reveal reveal-delay-1" data-cat="strategy" data-link="https://drive.google.com/drive/folders/1nVsiPBSMmqUSmdE-xXfwywdlY3_cCamt?usp=sharing">
+      <div class="port-card-img bg-grad-4">
+        <div class="port-card-img-inner">
+          <img src="https://i.imgur.com/CuOc4ea.png" alt="Project Image"
+         style="width:100%; height:100%; object-fit:cover;" />
+        </div>
+      </div>
+      <div class="port-card-body">
+        <div class="port-card-tag">Identification and Engagement>
+        </div>
+        <div class="port-card-title">Stakeholder Management</div>
+        <div class="port-card-desc">Developed stakeholder analysis and engagement strategies to ensure alignment and support for organizational initiatives.</div>
+      </div>
+      <div class="port-card-footer">
+        <div class="tags">
+          <span class="port-tag">Denver Intl Airport Case Study</span>
+          <span class="port-tag">24 Stakeholders</span>
+          <span class="port-tag">Power and Interest Grid </span>
+        </div>
+        <div class="port-arrow">→</div>
+      </div>
+    </div>
+
+<div class="port-card reveal reveal-delay-2" data-cat="strategy" data-link="https://drive.google.com/drive/folders/1cDOSsnOp9AfakBaq0yftReeVBafhqLDY?usp=drive_link">
+  <div class="port-card-img bg-grad-5">
+    <div class="port-card-img-inner">
+      <img src="https://i.imgur.com/kFBLdSu.png" alt="Risk Management"
+           style="width:100%; height:100%; object-fit:cover;" />
+    </div>
+  </div>
+  <div class="port-card-body">
+    <div class="port-card-tag">Risk Identification and Mitigation</div>
+    <div class="port-card-title">Risk Management</div>
+    <div class="port-card-desc">Developed risk registers, mitigation strategies and contingency plans to proactively manage project risks and minimise impact on delivery.</div>
+  </div>
+  <div class="port-card-footer">
+    <div class="tags">
+      <span class="port-tag">Risk Register</span>
+      <span class="port-tag">Mitigation Strategies</span>
+      <span class="port-tag">Contingency Planning</span>
+    </div>
+      <div class="port-arrow">→</div>
+    </a>
+  </div>
+</div>
+
+<div class="port-card reveal reveal-delay-3" data-cat="infrastructure" data-link="https://drive.google.com/drive/folders/1pljmNLs3X3skZ-J0ZK0KXamIU_ZF2GmN?usp=drive_link">
+  <div class="port-card-img bg-grad-6">
+    <div class="port-card-img-inner">
+      <img src="https://i.imgur.com/ujHSi6X.png" alt="Procurement Guide"
+           style="width:100%; height:100%; object-fit:cover;" />
+    </div>
+  </div>
+  <div class="port-card-body">
+    <div class="port-card-tag">Procurement and Vendor Management</div>
+    <div class="port-card-title">Procurement Guide</div>
+    <div class="port-card-desc">Developed end-to-end procurement frameworks covering vendor selection, contract negotiation and supplier management to optimise project costs and ensure delivery standards.</div>
+  </div>
+  <div class="port-card-footer">
+    <div class="tags">
+      <span class="port-tag">Vendor Selection</span>
+      <span class="port-tag">Contract Management</span>
+      <span class="port-tag">Supplier Relations</span>
+    </div>
+    <div class="port-arrow">→</div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label reveal">Deep Dive</div>
+  <h2 class="section-title reveal reveal-delay-1">Featured <span>Projects</span></h2>
+  <p class="section-subtitle reveal reveal-delay-2"></p>
+
+  <div class="projects-featured">
+    <div class="proj-card-big reveal reveal-delay-1">
+      <div class="proj-big-banner" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding:0; overflow:hidden;">
+      <img src="https://i.imgur.com/YHhcdcl.png" alt="Project Banner"
+       style="width:100%; height:100%; object-fit:cover; position:relative; z-index:1;" />
+      </div>
+      <div class="proj-big-body">
+        <div class="proj-big-meta">
+          <span class="proj-status status-complete">✓ Completed</span>
+          <span class="proj-date">Aug 2025-Dec 2025</span>
+        </div>
+        <h3 class="proj-big-title">AI PMO Tool</h3>
+        <p class="proj-big-desc"> Developed a RAG-based AI PMO Tool, that centralized PM processes across 6 stakeholder groups and supported the implementation of an AI first PMO leading to 6 teams, automating 25% of work, eliminating 2,496 manual hours within a leading sustainability firm in San Angel, Mexico.</p>
+        <div class="proj-progress-wrap">
+        <div class="proj-progress-label"><span>Scope Delivered</span><span>100%</span></div>
+         <div class="proj-progress-track"><div class="proj-progress-fill" style="width:100%;"></div></div>
+        </div>
+        <div class="proj-progress-wrap" style="margin-top:.8rem">
+         <div class="proj-progress-label"><span>Schedule and Budget Criteria</span><span>100%</span></div>
+         <div class="proj-progress-track"><div class="proj-progress-fill" style="width:100%; background: linear-gradient(90deg, #059669, #10b981);"></div></div>
+        </div>
+        <div style="margin-top:1.5rem; display:flex; gap:.5rem; flex-wrap:wrap;">
+        </div>
+      </div>
+    </div>
+
+    <div class="projects-side">
+      <div class="proj-card-sm reveal reveal-delay-2">
+        <div class="proj-sm-top">
+          <div class="proj-icon">📊</div>
+          <span class="proj-status status-complete">✓ Done</span>
+        </div>
+        <div class="proj-sm-title">Smartsheet IT Portfolio dashboard</div>
+        <div class="proj-sm-desc">Delivered a $58,250 project on schedule using a 40+ work package WBS, mitigating 15 risks with a $10,775 contingency reserve through EMV analysis and optimising resources via fast-tracking and crashing techniques.</div>
+        <div class="proj-sm-tags">
+        <span class="port-tag">MS Project</span>
+        <span class="port-tag">Smartsheet IT Portfolio</span>
+        <span class="port-tag">Risk & Schedule Management</span>
+        </div>
+        <div class="proj-progress-wrap" style="margin-top:1rem">
+          <div class="proj-progress-label"><span>On-time delivery</span><span>100%</span></div>
+          <div class="proj-progress-track"><div class="proj-progress-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="proj-card-sm reveal reveal-delay-3">
+        <div class="proj-sm-top">
+          <div class="proj-icon">☁️</div>
+          <span class="proj-status status-complete">✓ Done</span>
+        </div>
+        <div class="proj-sm-title">AWS Cloud Infrastructure</div>
+        <div class="proj-sm-desc">Deployed a dynamic web application on Amazon EC2 with multi-AZ architecture, auto scaling groups, and CI/CD pipelines via CodeCommit and CodePipeline at Northeastern University.</div>
+        <div class="proj-sm-tags">
+          <span class="proj-sm-tag">Amazon EC2</span>
+          <span class="proj-sm-tag">CI/CD Pipeline</span>
+          <span class="proj-sm-tag">Multi-AZ</span>
+        </div>
+        <div class="proj-progress-wrap" style="margin-top:1rem">
+          <div class="proj-progress-label"><span>Completion</span><span>100%</span></div>
+          <div class="proj-progress-track"><div class="proj-progress-fill" style="width:100%;"></div></div>
+        </div>
+      </div>
+
+      <div class="proj-card-sm reveal reveal-delay-4">
+        <div class="proj-sm-top">
+          <div class="proj-icon">🤖</div>
+          <span class="proj-status status-complete">✓ Done</span>
+        </div>
+        <div class="proj-sm-title">The Livingston BOT</div>
+        <div class="proj-sm-desc">Steered development of an AI-driven customs classification tool for Livingston International at Freshworks, optimising resource allocation and improving delivery throughput via parallel task execution.</div>
+        <div class="proj-sm-tags">
+          <span class="proj-sm-tag">AI Automation</span>
+          <span class="proj-sm-tag">MS Project WBS</span>
+          <span class="proj-sm-tag">Customs Compliance</span>
+        </div>
+        <div class="proj-progress-wrap" style="margin-top:1rem">
+          <div class="proj-progress-label"><span>Completion</span><span>100%</span></div>
+          <div class="proj-progress-track"><div class="proj-progress-fill" style="width:100%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="section-label reveal">Experience</div>
+  <h2 class="section-title reveal reveal-delay-1">Leadership <span>Journey</span></h2>
+  <p class="section-subtitle reveal reveal-delay-2">A track record of leading people, programs, and transformations at scale.</p>
+
+  <div class="timeline">
+
+    <div class="tl-item reveal">
+      <div class="tl-dot-big">🤖</div>
+      <div class="tl-period">Aug 2025 — Dec 2025</div>
+      <div class="tl-role">AI Project Manager Co-op</div>
+      <div class="tl-company"><strong>Aosenuma - Gaman AI</strong> · Houston, TX</div>
+      <p class="tl-desc">Led end-to-end project delivery lifecycles for a program of 3 AI-based projects utilizing LLM, RAG, and multi-agent-based technology within a leading sustainability firm.</p>
+      <ul class="tl-achievements">
+        <li>Analyzed <strong>80+ project proposals</strong> to design a two-phase AI transformation strategy, improving operational efficiency by <strong>22%</strong></li>
+        <li>Mitigated critical delivery risks via a structured <strong>RAID log</strong>, resulting in a <strong>37% improvement</strong> in on-time milestone delivery</li>
+        <li>Presented organization-wide AI implementation impact outlining revenue growth prospects via <strong>Google Apps Script dashboard</strong></li>
+      </ul>
+      <div class="tl-tags">
+        <span class="tl-tag">AI Project Management</span>
+        <span class="tl-tag">LLM & RAG</span>
+        <span class="tl-tag">RAID Log</span>
+        <span class="tl-tag">Multi-agent AI</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal reveal-delay-1">
+      <div class="tl-dot-big">📋</div>
+      <div class="tl-period">Jan 2025 — Mar 2025</div>
+      <div class="tl-role">Project Management Associate Co-op</div>
+      <div class="tl-company"><strong>Sexual Violence and Prevention Association</strong> · Boston, MA</div>
+      <p class="tl-desc">Spearheaded project planning using ClickUp Brain AI to enhance task creation, progress tracking, and status reporting across the organisation.</p>
+      <ul class="tl-achievements">
+        <li>Improved donor retention forecast by <strong>23%</strong> and flagged <strong>457 at-risk donors per month</strong> using PivotChart Fields on Excel</li>
+        <li>Designed interactive Excel dashboards to analyze growth opportunities and funding risks, guiding <strong>board-level prioritization</strong></li>
+        <li>Enhanced creative design approval lead time by <strong>40%</strong> (5 days to 3 days) by automating ClickUp and Canva via Zapier and webhooks</li>
+      </ul>
+      <div class="tl-tags">
+        <span class="tl-tag">ClickUp AI</span>
+        <span class="tl-tag">Excel Dashboards</span>
+        <span class="tl-tag">Zapier Automation</span>
+        <span class="tl-tag">Donor Analytics</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal reveal-delay-2">
+      <div class="tl-dot-big">🚀</div>
+      <div class="tl-period">Mar 2022 — Nov 2023</div>
+      <div class="tl-role">Customer Program Manager</div>
+      <div class="tl-company"><strong>Freshworks</strong> · Chennai, India</div>
+      <p class="tl-desc">Led a team of 8 developers executing 35+ development projects for enterprise clients across APAC, MENA, and North American regions.</p>
+      <ul class="tl-achievements">
+        <li>Piloted feature prioritization program for high MRR clients, fast-tracking <strong>50+ critical bugs</strong> and high-value feature releases</li>
+        <li>Drove <strong>25% ARR growth</strong> ($0.64M to $1.13M) by converting client needs into prioritized product enhancements</li>
+        <li>Developed a <strong>Power BI dashboard</strong> to highlight at-risk projects, reducing at-risk projects by <strong>12%</strong></li>
+      </ul>
+      <div class="tl-tags">
+        <span class="tl-tag">Program Management</span>
+        <span class="tl-tag">Power BI</span>
+        <span class="tl-tag">APAC / MENA / NA</span>
+        <span class="tl-tag">ARR Growth</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal reveal-delay-3">
+      <div class="tl-dot-big">💼</div>
+      <div class="tl-period">Jan 2021 — Mar 2022</div>
+      <div class="tl-role">Product Specialist</div>
+      <div class="tl-company"><strong>Freshworks</strong> · Chennai, India</div>
+      <p class="tl-desc">Spearheaded end-to-end client account management for 60 global accounts, driving $0.2M in new business revenue.</p>
+      <ul class="tl-achievements">
+        <li>Headed <strong>Quarterly Business Reviews (QBRs)</strong> for global clients, facilitating strategic executive dialogue and joint revenue growth</li>
+        <li>Led a cross-functional team to analyze <strong>80,000+ tickets</strong>, detecting usability gaps and driving product feature improvements</li>
+        <li>Applied <strong>MoSCoW prioritization</strong> to align product roadmap to measurable business impact</li>
+      </ul>
+      <div class="tl-tags">
+        <span class="tl-tag">Account Management</span>
+        <span class="tl-tag">QBRs</span>
+        <span class="tl-tag">MoSCoW Framework</span>
+        <span class="tl-tag">Product Roadmap</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal reveal-delay-4">
+      <div class="tl-dot-big">🔧</div>
+      <div class="tl-period">Apr 2019 — May 2020</div>
+      <div class="tl-role">Quality Assurance Engineer</div>
+      <div class="tl-company"><strong>Contus Tech.</strong> · Chennai, India</div>
+      <p class="tl-desc">Directed quality assurance for IoT projects including Daimler and Mahindra fleet management systems, leveraging Simulink and Selenium.</p>
+      <ul class="tl-achievements">
+        <li>Chaired weekly strategy meetings to refine test plans and conduct <strong>QAQC evaluations</strong>, enabling client handovers</li>
+        <li>Integrated <strong>JIRA and Jenkins</strong> to streamline QA workflows, reducing test cycles by <strong>40%</strong></li>
+        <li>Accelerated deployment frequency across IoT fleet management projects for <strong>enterprise automotive clients</strong></li>
+      </ul>
+      <div class="tl-tags">
+        <span class="tl-tag">QA Engineering</span>
+        <span class="tl-tag">JIRA & Jenkins</span>
+        <span class="tl-tag">IoT Projects</span>
+        <span class="tl-tag">Selenium</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMMENTED OUT: Events & Blog sections
+<section id="events">
+  <div class="section-label reveal">On Stage</div>
+  <h2 class="section-title reveal reveal-delay-1">Events & <span>Conferences</span></h2>
+  <p class="section-subtitle reveal reveal-delay-2">Sharing insights, connecting with peers, and shaping the conversation around modern project management.</p>
+
+  <div class="events-grid">
+    <div class="event-card reveal">
+      <div class="event-banner" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
+        <div class="event-year">2024</div>
+        <span class="event-date-chip">Oct 14–16, 2024</span>
+        <span class="event-role-chip role-speaker">🎤 Keynote Speaker</span>
+      </div>
+      <div class="event-body">
+        <div class="event-title">PMI Global Summit 2024</div>
+        <div class="event-org">Project Management Institute</div>
+        <div class="event-location">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Las Vegas, Nevada, USA
+        </div>
+        <div class="event-highlight">
+          <p>"The AI-Augmented Project Manager: Leading Teams in the Age of Automation" — a keynote to 3,200 attendees.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-card reveal reveal-delay-1">
+      <div class="event-banner" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);">
+        <div class="event-year">2024</div>
+        <span class="event-date-chip">May 22, 2024</span>
+        <span class="event-role-chip role-panelist">🎙 Panelist</span>
+      </div>
+      <div class="event-body">
+        <div class="event-title">Future of Work Summit</div>
+        <div class="event-org">Gartner</div>
+        <div class="event-location">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          London, United Kingdom
+        </div>
+        <div class="event-highlight">
+          <p>Panelist on "Hybrid Methodologies in Enterprise: Agile vs. Waterfall vs. Both" with 900 senior practitioners.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-card reveal reveal-delay-2">
+      <div class="event-banner" style="background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);">
+        <div class="event-year">2024</div>
+        <span class="event-date-chip">Mar 8, 2024</span>
+        <span class="event-role-chip role-organizer">⭐ Lead Organizer</span>
+      </div>
+      <div class="event-body">
+        <div class="event-title">Women in PM Leadership Forum</div>
+        <div class="event-org">Self-Founded Initiative</div>
+        <div class="event-location">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Virtual (Global)
+        </div>
+        <div class="event-highlight">
+          <p>Organized and hosted a 1,200-attendee forum connecting women in PM across 40+ countries on International Women's Day.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-card reveal reveal-delay-1">
+      <div class="event-banner" style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);">
+        <div class="event-year">2023</div>
+        <span class="event-date-chip">Nov 6–8, 2023</span>
+        <span class="event-role-chip role-speaker">🎤 Speaker</span>
+      </div>
+      <div class="event-body">
+        <div class="event-title">Agile World Conference</div>
+        <div class="event-org">Agile Alliance</div>
+        <div class="event-location">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Berlin, Germany
+        </div>
+        <div class="event-highlight">
+          <p>Presented "Scaling Scrum Across 12 Countries: Lessons from the Frontlines" — rated 4.9/5 by attendees.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-card reveal reveal-delay-2">
+      <div class="event-banner" style="background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);">
+        <div class="event-year">2023</div>
+        <span class="event-date-chip">Sep 19, 2023</span>
+        <span class="event-role-chip role-panelist">🎙 Panelist</span>
+      </div>
+      <div class="event-body">
+        <div class="event-title">TechLeaders Roundtable</div>
+        <div class="event-org">Forbes Technology Council</div>
+        <div class="event-location">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          New York, USA
+        </div>
+        <div class="event-highlight">
+          <p>Invited roundtable on "Building Resilient Project Teams in Post-Pandemic Enterprise" with C-suite leaders.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-card reveal reveal-delay-3">
+      <div class="event-banner" style="background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%);">
+        <div class="event-year">2022</div>
+        <span class="event-date-chip">Apr 27, 2022</span>
+        <span class="event-role-chip role-speaker">🎤 Workshop Lead</span>
+      </div>
+      <div class="event-body">
+        <div class="event-title">Digital Transformation Expo</div>
+        <div class="event-org">IDC Events</div>
+        <div class="event-location">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Singapore
+        </div>
+        <div class="event-highlight">
+          <p>Full-day workshop: "Practical Change Management for Digital Transformations" — 250 APAC attendees.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="section-label reveal">Thoughts</div>
+  <h2 class="section-title reveal reveal-delay-1">Insights & <span>Writing</span></h2>
+  <p class="section-subtitle reveal reveal-delay-2">Sharing what I've learned about leadership, delivery excellence, and the evolving PM landscape.</p>
+
+  <div class="blog-grid">
+    <a href="#" class="blog-featured reveal reveal-delay-1" style="text-decoration:none;color:inherit;">
+      <div class="blog-featured-img" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
+        <span style="position:relative;z-index:1">🤖</span>
+      </div>
+      <div class="blog-featured-body">
+        <div class="blog-cat">AI & Project Management</div>
+        <h3 class="blog-featured-title">How AI Is Quietly Redefining the Project Manager's Role</h3>
+        <p class="blog-featured-desc">Three years ago, I thought AI was a tool for engineers. Today, it's in my daily standup. Here's how I've integrated AI into our PM toolkit — what works, what doesn't, and where we're headed.</p>
+        <div class="blog-meta">
+          <div class="blog-meta-avatar">PB</div>
+          <div class="blog-meta-info">
+            <div class="blog-meta-name">Pooja Bernice Janarathinam</div>
+            <div class="blog-meta-date">March 18, 2025</div>
+          </div>
+          <span class="blog-meta-read">8 min read</span>
+        </div>
+      </div>
+    </a>
+
+    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+      <a href="#" class="blog-card reveal reveal-delay-2" style="text-decoration:none;color:inherit;">
+        <div class="blog-card-icon" style="background: rgba(37,99,235,0.08);">📊</div>
+        <div class="blog-card-content">
+          <div class="blog-cat" style="font-size:.65rem;margin-bottom:.3rem;">Metrics</div>
+          <div class="blog-card-title">The 5 KPIs Every Project Manager Needs to Track</div>
+          <div class="blog-card-desc">Beyond on-time delivery — the metrics that actually reveal project health.</div>
+          <div class="blog-card-date">Feb 5, 2025 · 5 min</div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card reveal reveal-delay-3" style="text-decoration:none;color:inherit;">
+        <div class="blog-card-icon" style="background: rgba(14,165,233,0.10);">🧩</div>
+        <div class="blog-card-content">
+          <div class="blog-cat" style="font-size:.65rem;margin-bottom:.3rem;">Team Dynamics</div>
+          <div class="blog-card-title">Managing Conflict in Cross-Functional Teams</div>
+          <div class="blog-card-desc">Practical scripts and frameworks for navigating difficult conversations.</div>
+          <div class="blog-card-date">Jan 12, 2025 · 6 min</div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card reveal reveal-delay-4" style="text-decoration:none;color:inherit;">
+        <div class="blog-card-icon" style="background: rgba(30,80,200,0.08);">🎯</div>
+        <div class="blog-card-content">
+          <div class="blog-cat" style="font-size:.65rem;margin-bottom:.3rem;">Strategy</div>
+          <div class="blog-card-title">OKRs vs. KPIs: Which Should Your PMO Use?</div>
+          <div class="blog-card-desc">A no-nonsense comparison from someone who's implemented both at scale.</div>
+          <div class="blog-card-date">Dec 3, 2024 · 7 min</div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card reveal reveal-delay-5" style="text-decoration:none;color:inherit;">
+        <div class="blog-card-icon" style="background: rgba(245,158,11,0.10);">🔥</div>
+        <div class="blog-card-content">
+          <div class="blog-cat" style="font-size:.65rem;margin-bottom:.3rem;">Leadership</div>
+          <div class="blog-card-title">Why Your Best PMs Are Quietly Quitting</div>
+          <div class="blog-card-desc">Retention lessons learned the hard way after losing two senior PMs in one quarter.</div>
+          <div class="blog-card-date">Nov 14, 2024 · 9 min</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+END COMMENTED OUT SECTIONS -->
+
+<section id="testimonials">
+  <div class="section-label reveal">Social Proof</div>
+  <h2 class="section-title reveal reveal-delay-1">What People <span>Say</span></h2>
+  <p class="section-subtitle reveal reveal-delay-2">Feedback from clients, colleagues, and team members who've worked alongside me.</p>
+
+  <div class="testimonials-inner reveal reveal-delay-2">
+    <div class="testi-track" id="testi-track">
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">"Her ability to build and maintain strong relationships with our team was a key factor in the smooth collaboration between Alghanim and Freshworks. Her solutions were always well thought out and delivered with precision, reflecting her deep technical expertise and her dedication to customer satisfaction."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#0f766e,#14b8a6)">GM</div>
+          <div>
+            <div class="testi-name">George Mathew</div>
+            <div class="testi-role">Senior Product Owner, Alghanim Industries, Kuwait</div>
+          </div>
+        </div>
+        <span class="testi-company">ALGHANIM INDUSTRIES</span>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">"Thank you to you and your team. I truly appreciate the effort everyone put in to get the SOW together. I know there is a lot of information that needed to be disseminated and it was a large project to scope out within a very short turnaround."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">SC</div>
+          <div>
+            <div class="testi-name">Sandra Campbell</div>
+            <div class="testi-role">Project Lead, Global Reward Solutions, Ontario Canada</div>
+          </div>
+        </div>
+        <span class="testi-company">GLOBAL REWARD SOLUTIONS</span>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">"Always available to help solve/create processes to maximize our productivity."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#b45309,#f59e0b)">JT</div>
+          <div>
+            <div class="testi-name">Jason Tebo</div>
+            <div class="testi-role">Business Analyst, Livingston Intl., Chicago, IL</div>
+          </div>
+        </div>
+        <span class="testi-company">LIVINGSTON INTL.</span>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">"There were various occasions that had tight deadlines, and Pooja diligently worked on all the deliverables by collaborating across developers, Customer Success Managers, and other stakeholders. Her sense of urgency, attention to detail, and proactiveness in C-level escalations helped her showcase her technical prowess with relative ease."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#15803d,#4ade80)">KG</div>
+          <div>
+            <div class="testi-name">Karthik Gopalan</div>
+            <div class="testi-role">Manager, Freshworks Inc.</div>
+          </div>
+        </div>
+        <span class="testi-company">FRESHWORKS</span>
+      </div>
+
+      
+    </div>
+
+    <div class="testi-nav">
+      <div class="testi-dot active" data-idx="0"></div>
+      <div class="testi-dot" data-idx="1"></div>
+      <div class="testi-dot" data-idx="2"></div>
+      <div class="testi-dot" data-idx="3"></div>
+    </div>
+    <div class="testi-arrows">
+      <button class="testi-arrow" id="testi-prev">&#8592;</button>
+      <button class="testi-arrow" id="testi-next">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-glow"></div>
+  <div class="contact-inner">
+    <div class="section-label reveal" style="justify-content:center">Let's Connect</div>
+    <h2 class="contact-title reveal reveal-delay-1">Ready to build <span style="background:linear-gradient(135deg,var(--c1),var(--p1),var(--pk));-webkit-background-clip:text;-webkit-text-fill-color:transparent">something great?</span></h2>
+    <p class="contact-sub reveal reveal-delay-2">Whether you have a project in mind, want to discuss collaboration,<br>or just want to say hello — my inbox is always open.</p>
+    <div class="contact-actions reveal reveal-delay-3">
+      <a href="mailto:poojabernice97@gmail.com" class="btn-primary">✉ Send a Message</a>
+      <a href="Pooja%20Bernice.pdf" download="Pooja_Bernice_Resume.pdf" class="btn-secondary">⬇ Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Pooja Bernice Janarathinam</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-socials">
+      <a href="#" class="social-btn" title="LinkedIn">in</a>
+      <a href="#" class="social-btn" title="Twitter">𝕏</a>
+      <a href="#" class="social-btn" title="Medium">M</a>
+      <a href="#" class="social-btn" title="GitHub">⌥</a>
+    </div>
+    <div class="footer-copy">© 2025 Pooja Bernice Janarathinam · All rights reserved</div>
+  </div>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top  = my + 'px';
+});
+
+function animateRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+const hamburger = document.getElementById('hamburger');
+const navLinks  = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx    = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', () => { resize(); initParticles(); });
+
+  const COLORS = ['rgba(37,99,235,', 'rgba(30,80,200,', 'rgba(14,165,233,', 'rgba(59,130,246,'];
+
+  function initParticles() {
+    particles = [];
+    const count = Math.floor((W * H) / 14000);
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 2 + 0.5,
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        alpha: Math.random() * 0.4 + 0.15
+      });
+    }
+  }
+  initParticles();
+
+  let mouseX = W / 2, mouseY = H / 2;
+  document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 140) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(37,99,235,${0.12 * (1 - dist / 140)})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    particles.forEach(p => {
+      const dx = p.x - mouseX;
+      const dy = p.y - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 180) {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(59,130,246,${0.2 * (1 - dist / 180)})`;
+        ctx.lineWidth = 0.8;
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(mouseX, mouseY);
+        ctx.stroke();
+      }
+    });
+
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + p.alpha + ')';
+      ctx.fill();
+
+      const dx = p.x - mouseX;
+      const dy = p.y - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 100) {
+        const force = (100 - dist) / 100 * 0.8;
+        p.vx += (dx / dist) * force;
+        p.vy += (dy / dist) * force;
+      }
+
+      p.vx *= 0.995;
+      p.vy *= 0.995;
+      p.x  += p.vx;
+      p.y  += p.vy;
+
+      if (p.x < 0) p.x = W;
+      if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H;
+      if (p.y > H) p.y = 0;
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const duration = 2000;
+  const start = performance.now();
+  function update(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 3);
+    el.textContent = Math.round(eased * target);
+    if (t < 1) requestAnimationFrame(update);
+    else el.textContent = target + (el.dataset.target == '98' ? '%' : '+');
+  }
+  requestAnimationFrame(update);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      el.classList.add('visible');
+      if (el.classList.contains('counter')) animateCounter(el);
+      if (el.classList.contains('bar-fill')) el.classList.add('animated');
+      if (el.classList.contains('proj-progress-fill')) {
+        const pw = el.style.getPropertyValue('--pw') || '1';
+        el.style.transform = 'scaleX(' + pw + ')';
+        el.classList.add('animated');
+      }
+      observer.unobserve(el);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.counter').forEach(el => observer.observe(el));
+
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.bar-fill').forEach(b => b.classList.add('animated'));
+      entry.target.querySelectorAll('.proj-progress-fill').forEach(b => {
+        const pw = b.style.getPropertyValue('--pw') || '1';
+        b.style.transform = 'scaleX(' + pw + ')';
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.about-bars, .proj-card-big, .proj-card-sm').forEach(el => barObserver.observe(el));
+
+document.querySelectorAll('.port-card, .testi-card, .event-card, .proj-card-big').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect   = card.getBoundingClientRect();
+    const x      = e.clientX - rect.left;
+    const y      = e.clientY - rect.top;
+    const cx     = rect.width  / 2;
+    const cy     = rect.height / 2;
+    const rotX   = ((y - cy) / cy) * -8;
+    const rotY   = ((x - cx) / cx) *  8;
+    card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.port-card').forEach(card => {
+      if (filter === 'all' || card.dataset.cat === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+(function() {
+  const track = document.getElementById('testi-track');
+  const dots  = document.querySelectorAll('.testi-dot');
+  const cards = track.querySelectorAll('.testi-card');
+  let current = 0;
+  const total = dots.length;
+
+  function getMaxIdx() {
+    const cardW = cards[0].offsetWidth + 24;
+    const visible = Math.max(1, Math.round(track.offsetWidth / cardW));
+    return Math.max(0, cards.length - visible);
+  }
+
+  function goTo(idx) {
+    current = ((idx % total) + total) % total;
+    const cardW = cards[0].offsetWidth + 24;
+    const scrollIdx = Math.min(current, getMaxIdx());
+    track.style.transform = `translateX(-${scrollIdx * cardW}px)`;
+    track.style.transition = 'transform .5s cubic-bezier(.23,1,.32,1)';
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+  document.getElementById('testi-prev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('testi-next').addEventListener('click', () => goTo(current + 1));
+  setInterval(() => goTo(current + 1), 4500);
+  window.addEventListener('resize', () => goTo(current));
+})();
+
+document.addEventListener('mousemove', e => {
+  const xPct = e.clientX / window.innerWidth  - 0.5;
+  const yPct = e.clientY / window.innerHeight - 0.5;
+  document.querySelectorAll('.orb').forEach((orb, i) => {
+    const factor = (i + 1) * 18;
+    orb.style.transform = `translate(${xPct * factor}px, ${yPct * factor}px)`;
+  });
+});
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('.bar-fill').forEach(b => {
+    b.classList.add('animated');
+  });
+});
+
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navItems.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--white)' : '';
+  });
+});
+
+/* ============================================================
+   CARD MODAL — open on click for cards with data-link
+============================================================ */
+document.addEventListener('DOMContentLoaded', function () {
+  const backdrop = document.getElementById('card-modal-backdrop');
+  const modalLink = document.getElementById('card-modal-link');
+  const modalTag  = document.getElementById('card-modal-tag');
+  const modalTitle= document.getElementById('card-modal-title');
+  const modalDesc = document.getElementById('card-modal-desc');
+  const modalTags = document.getElementById('card-modal-tags');
+  const modalBannerImg = document.getElementById('card-modal-banner-img');
+  const closeBtn  = document.getElementById('card-modal-close');
+
+  function openModal(card) {
+    const link  = card.dataset.link;
+    const tag   = card.querySelector('.port-card-tag')?.textContent  || '';
+    const title = card.querySelector('.port-card-title')?.textContent || '';
+    const desc  = card.querySelector('.port-card-desc')?.textContent  || '';
+    const tagEls= card.querySelectorAll('.port-tag');
+    const imgEl = card.querySelector('.port-card-img-inner img');
+
+    modalTag.textContent   = tag;
+    modalTitle.textContent = title;
+    modalDesc.textContent  = desc;
+    modalTags.innerHTML    = [...tagEls].map(t => `<span>${t.textContent}</span>`).join('');
+    modalLink.href         = link || '#';
+    modalBannerImg.src     = imgEl ? imgEl.src : '';
+    modalBannerImg.style.display = imgEl ? 'block' : 'none';
+
+    backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    backdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.port-card[data-link]').forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+    card.style.cursor = 'none';
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', e => { if (e.target === backdrop) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+});
+</script>
+
+<!-- CARD MODAL -->
+<div id="card-modal-backdrop">
+  <div id="card-modal">
+    <div id="card-modal-banner">
+      <img id="card-modal-banner-img" src="" alt="" />
+    </div>
+    <div id="card-modal-body">
+      <div id="card-modal-tag"></div>
+      <div id="card-modal-title"></div>
+      <div id="card-modal-desc"></div>
+      <div id="card-modal-tags"></div>
+      <div id="card-modal-actions">
+        <a id="card-modal-link" href="#" target="_blank" rel="noopener">
+          &#x2197; View in Google Drive
+        </a>
+        <button id="card-modal-close">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
